@@ -53,7 +53,7 @@ All services(e.g., auth, user, product) will use `ci-template.yml`. Example:
 ```yaml
 jobs:
   call-ci-template:
-    uses: ar-ecommerce-platform/ci-workflows/.github/workflows/ci-template.yml@main
+    uses: ar-ecommerce-backend/ci-workflows/.github/workflows/ci-template.yml@main
     with:
       run_integration_tests: false # Input to skip integration tests
     secrets:

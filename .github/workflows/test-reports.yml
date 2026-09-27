@@ -79,7 +79,7 @@ jobs:
       - name: Checkout Test Reports Repo
         uses: actions/checkout@v5
         with:
-          repository: ar-ecommerce-platform/test-reports
+          repository: ar-ecommerce-backend/test-reports
           token: ${{ secrets.PAT_REPORTS_TOKEN }}
           path: test-reports
 

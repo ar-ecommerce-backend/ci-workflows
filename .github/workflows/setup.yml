@@ -97,7 +97,7 @@ jobs:
       - name: Set Docker Image Name
         id: image
         run: |
-          IMAGE_NAME=ghcr.io/ar-ecommerce-platform/${{ inputs.service_name }}
+          IMAGE_NAME=ghcr.io/ar-ecommerce-backend/${{ inputs.service_name }}
           echo "image_sha=${IMAGE_NAME}:${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
           echo "image_ci=${IMAGE_NAME}:ci" >> "$GITHUB_OUTPUT"
 
@@ -131,7 +131,7 @@ jobs:
       # 10. Wait for service to be healthy
       # ---------------------------
       - name: Wait for service to be healthy
-        uses: ar-ecommerce-platform/ci-workflows/.github/actions/wait-for-health@dev
+        uses: ar-ecommerce-backend/ci-workflows/.github/actions/wait-for-health@dev
         with:
           container_name: ${{ inputs.service_name }}
 

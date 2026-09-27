@@ -45,13 +45,13 @@ jobs:
           --health-interval=5s \
           --health-timeout=3s \
           --health-retries=5 \
-          ghcr.io/ar-ecommerce-platform/config-server:latest
+          ghcr.io/ar-ecommerce-backend/config-server:latest
 
       # ---------------------------
       # 2. Waits for config server to be healthy
       # ---------------------------
       - name: Wait for config-server to be healthy
-        uses: ar-ecommerce-platform/ci-workflows/.github/actions/wait-for-health@dev
+        uses: ar-ecommerce-backend/ci-workflows/.github/actions/wait-for-health@dev
         with:
           container_name: config-server
 
@@ -78,7 +78,7 @@ jobs:
       # ---------------------------
       - name: Wait for test-db to be healthy
         if: ${{ inputs.enable_database }}
-        uses: ar-ecommerce-platform/ci-workflows/.github/actions/wait-for-health@dev
+        uses: ar-ecommerce-backend/ci-workflows/.github/actions/wait-for-health@dev
         with:
           container_name: test-db
 
@@ -119,7 +119,7 @@ jobs:
       - name: Run Integration Tests
         run: ./gradlew integrationTest --no-daemon
         env:
-          SERVICE_IMAGE: ghcr.io/ar-ecommerce-platform/${{ inputs.service_name }}:${GITHUB_SHA}
+          SERVICE_IMAGE: ghcr.io/ar-ecommerce-backend/${{ inputs.service_name }}:${GITHUB_SHA}
 
       # ---------------------------
       # 9. Upload report for feedback
