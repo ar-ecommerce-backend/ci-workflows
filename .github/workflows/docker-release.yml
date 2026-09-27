@@ -171,23 +171,23 @@ jobs:
       # ---------------------------
       - name: Pull CI image
         run: |
-          docker pull ghcr.io/ar-ecommerce-platform/${{ inputs.service_name }}:${GITHUB_SHA}
+          docker pull ghcr.io/ar-ecommerce-backend/${{ inputs.service_name }}:${GITHUB_SHA}
 
       # ---------------------------
       # 10. Retag image for release
       # ---------------------------
       - name: Retag image for release
         run: |
-          LATEST_TAG=ghcr.io/ar-ecommerce-platform/${{ inputs.service_name }}:latest
-          VERSION_TAG=ghcr.io/ar-ecommerce-platform/${{ inputs.service_name }}:$NEXT_VERSION
+          LATEST_TAG=ghcr.io/ar-ecommerce-backend/${{ inputs.service_name }}:latest
+          VERSION_TAG=ghcr.io/ar-ecommerce-backend/${{ inputs.service_name }}:$NEXT_VERSION
 
-          docker tag ghcr.io/ar-ecommerce-platform/${{ inputs.service_name }}:${GITHUB_SHA} $LATEST_TAG
-          docker tag ghcr.io/ar-ecommerce-platform/${{ inputs.service_name }}:${GITHUB_SHA} $VERSION_TAG
+          docker tag ghcr.io/ar-ecommerce-backend/${{ inputs.service_name }}:${GITHUB_SHA} $LATEST_TAG
+          docker tag ghcr.io/ar-ecommerce-backend/${{ inputs.service_name }}:${GITHUB_SHA} $VERSION_TAG
 
       # ---------------------------
       # 11. Push release image
       # ---------------------------
       - name: Push release image
         run: |
-          docker push ghcr.io/ar-ecommerce-platform/${{ inputs.service_name }}:latest
-          docker push ghcr.io/ar-ecommerce-platform/${{ inputs.service_name }}:$NEXT_VERSION
+          docker push ghcr.io/ar-ecommerce-backend/${{ inputs.service_name }}:latest
+          docker push ghcr.io/ar-ecommerce-backend/${{ inputs.service_name }}:$NEXT_VERSION
